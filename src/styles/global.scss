@@ -22,11 +22,6 @@
 	font-display: swap;
 }
 
-@mixin button {
-	border: 1px solid blue;
-	color: red;
-	padding: 1rem;
-}
 
 body {
 	font: {
@@ -49,19 +44,10 @@ body {
 	color: $gray-dark;
 }
 
-p {
-	@include button();
-
-	.accent {
-		font-family: 'sans-serif';
-		font-size: 40px;
-		@include button()
-	}
-}
 
 
 main {
-	width: 720px;
+	width: 100%;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;

@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -12,61 +13,99 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>Märchen mit Bedeutung</h1>
-			<p>
-				Willkommen zur Website von <span class="accent">Ulli</span> blog
-				starter template. This template serves as a lightweight,
-				minimally-styled starting point for anyone looking to build a
-				personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured
-				in your
-				<code>astro.config.mjs</code> file. You can customize your setup
-				with
-				<a href="https://astro.build/integrations">Astro Integrations</a
-				> to add tools like Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<span class="accent">Ulli</span>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>
-					Edit the site header items in <code
-						>src/components/Header.astro</code
-					>
-				</li>
-				<li>
-					Add your name to the footer in <code
-						>src/components/Footer.astro</code
-					>
-				</li>
-				<li>
-					Check out the included blog posts in <code
-						>src/content/blog/</code
-					>
-				</li>
-				<li>
-					Customize the blog post page layout in <code
-						>src/layouts/BlogPost.astro</code
-					>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a
-					href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a
-				> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check
-				out <a href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+		<div
+			class="h-screen bg-gradient-to-t from-lime-950 to-lime-900 flex justify-center items-center"
+		>
+			<div class="relative title text-slate-200 text-5xl md:text-8xl">
+				Märchen sind ...
+				<div class="top-9 absolute roller text-slate-100">
+					<span id="rolltext"
+						>Inspiration<br />
+						 Fantasie<br />
+						 Bildung<br />
+						 Bewätigung<br />
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="w-full flex justify-center p-20">
+			<Card />
+		</div>
+
 		<Footer />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+			.title {
+				font-family: "Prata", serif;
+
+				> .title-inner {
+					display: inline-block;
+				}
+			}
+
+			.roller {
+				height: 7rem;
+				line-height: 8rem;
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			#spare-time {
+				font-size: 1rem;
+				font-style: italic;
+				letter-spacing: 3rem;
+				margin-top: 0;
+			}
+
+			.roller #rolltext {
+				position: absolute;
+				top: 0;
+				animation: slide 20s infinite;
+			}
+
+			@keyframes slide {
+				0% {
+					top: 0;
+				}
+				25% {
+					top: -8rem;
+				}
+				50% {
+					top: -16rem;
+				}
+				72.5% {
+					top: -25.25rem;
+				}
+			}
+
+			#spare-time {
+				font-size: 1rem;
+				letter-spacing: 0.1rem;
+			}
+
+			.roller #rolltext {
+				animation: slide-mob 5s infinite;
+			}
+
+			@keyframes slide-mob {
+				0% {
+					top: 0;
+				}
+				25% {
+					top: -2.125rem;
+				}
+				50% {
+					top: -4.25rem;
+				}
+				72.5% {
+					top: -6.375rem;
+				}
+			}
+		</style>
 	</body>
 </html>
