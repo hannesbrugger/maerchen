@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseHead from "../components/BaseHead.astro";
 ---
 
 <!doctype html>
@@ -44,7 +45,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 			}
 
 			.roller {
-				height: 7rem;
+				height: 9rem;
 				line-height: 8rem;
 				position: relative;
 				overflow: hidden;
@@ -88,7 +89,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 			}
 
 			.roller #rolltext {
-				animation: slide-mob 5s infinite;
+				animation: slide-mob 20s infinite;
 			}
 
 			@keyframes slide-mob {
@@ -96,13 +97,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 					top: 0;
 				}
 				25% {
-					top: -2.125rem;
+					top: -8rem;
 				}
 				50% {
-					top: -4.25rem;
+					top: -16rem;
 				}
 				72.5% {
-					top: -6.375rem;
+					top: -24rem;
 				}
 			}
 		</style>
