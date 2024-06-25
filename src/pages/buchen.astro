@@ -1,0 +1,98 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <div
+            class="h-screen bg-gradient-to-t from-lime-950 to-lime-900 flex justify-center items-center"
+        >
+            buchen
+        </div>
+
+        <Footer />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+            .title {
+                font-family: "Prata", serif;
+
+                > .title-inner {
+                    display: inline-block;
+                }
+            }
+
+            .roller {
+                height: 7rem;
+                line-height: 8rem;
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #spare-time {
+                font-size: 1rem;
+                font-style: italic;
+                letter-spacing: 3rem;
+                margin-top: 0;
+            }
+
+            .roller #rolltext {
+                position: absolute;
+                top: 0;
+                animation: slide 20s infinite;
+            }
+
+            @keyframes slide {
+                0% {
+                    top: 0;
+                }
+                25% {
+                    top: -8rem;
+                }
+                50% {
+                    top: -16rem;
+                }
+                72.5% {
+                    top: -25.25rem;
+                }
+            }
+
+            #spare-time {
+                font-size: 1rem;
+                letter-spacing: 0.1rem;
+            }
+
+            .roller #rolltext {
+                animation: slide-mob 5s infinite;
+            }
+
+            @keyframes slide-mob {
+                0% {
+                    top: 0;
+                }
+                25% {
+                    top: -2.125rem;
+                }
+                50% {
+                    top: -4.25rem;
+                }
+                72.5% {
+                    top: -6.375rem;
+                }
+            }
+        </style>
+    </body>
+</html>

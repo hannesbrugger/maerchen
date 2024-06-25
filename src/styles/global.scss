@@ -33,14 +33,34 @@ body {
 	font-display: swap;
 }
 
-@mixin button {
-	border: 1px solid blue;
-	color: red;
-	padding: 1rem;
+
+body {
+	font: {
+		family: 'Atkinson', sans-serif;
+		size: 20px;
+	}
+
+	text: {
+		align: left;
+
+	}
+
+	line-height: 1.7;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient($gray-gradient) no-repeat;
+	background-size: 100% 600px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: $gray-dark;
 }
 
 
+
 main {
+	width: 100%;
+	max-width: calc(100% - 2em);
+	margin: auto;
 	padding: 3em 1em;
 }
 
