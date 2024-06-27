@@ -1,115 +1,155 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
+import { google, outlook, office365, yahoo, ics } from "calendar-link";
+
+// Set event as an object
+const event = {
+  title: "My birthday party",
+  description: "Be there!",
+  start: "2019-12-29 18:00:00 +0100",
+  duration: [3, "hour"],
+};
+
+const google_link = google(event); // https://calendar.google.com/calendar/render...
+const outlook_link = outlook(event); // https://outlook.live.com/owa/...
+const office365_link = office365(event); // https://outlook.office.com/owa/...
+const yahoo_link = yahoo(event); // https://calendar.yahoo.com/?v=60&title=...
+const ics_link = ics(event); // standard ICS file based on https://icalendar.org
+
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-				font-size: 1rem;
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<p class="text-[#DBE7C9] mb-8">Hier finden Sie bevorstehende und vergangene Veranstaltungen von mir. Von privaten Gartenfesten, Mittelaltermaerkten bis zum Altersheim. Schauen Sie sich gerne um und speichern sie einen Termin mit einem Klick in ihrem Kalender.</p>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li class="text-[#DBE7C9] ">
-								<a href={`/blog/${post.slug}/`}>
-									<img class="shadow-lg sh shadow-[#365314]" width={720} height={360} src={post.data.heroImage} alt="" />
-									<div class="flex justify-between">
-										<h4 class="title">{post.data.title}</h4>
-										<p class="date ">
-											<FormattedDate date={post.data.pubDate} />
-										</p>
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        width: calc(50% - 1rem);
+      }
+      ul li * {
+        text-decoration: none;
+        transition: 0.2s ease;
+      }
+      ul li:first-child {
+        width: 100%;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      ul li:first-child img {
+        width: 100%;
+      }
+      ul li:first-child .title {
+        font-size: 2.369rem;
+      }
+      ul li img {
+        margin-bottom: 0.5rem;
+        border-radius: 12px;
+      }
+      ul li a {
+        display: block;
+      }
+      .title {
+        margin: 0;
+        color: rgb(var(--black));
+        line-height: 1;
+      }
+      .date {
+        margin: 0;
+        color: rgb(var(--gray));
+        font-size: 0.8rem;
+      }
+      ul li a:hover h4,
+      ul li a:hover .date {
+        color: rgb(var(--accent));
+      }
+      ul a:hover img {
+        box-shadow: var(--box-shadow);
+      }
+      @media (max-width: 720px) {
+        ul {
+          gap: 0.5em;
+        }
+        ul li {
+          width: 100%;
+          text-align: center;
+        }
+        ul li:first-child {
+          margin-bottom: 0;
+        }
+        ul li:first-child .title {
+          font-size: 1.563em;
+        }
+      }
+
+      .zoom-img {
+        width: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .zoom-img:hover {
+        transform: scale(102%);
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <p class="text-[#DBE7C9] mb-8">
+        Hier finden Sie bevorstehende und vergangene Veranstaltungen von mir.
+        Von privaten Gartenfesten, Mittelaltermaerkten bis zum Altersheim.
+        Schauen Sie sich gerne um und speichern sie einen Termin mit einem Klick
+        in ihrem Kalender.
+      </p>
+      <section>
+        <ul>
+          {
+            posts.map((post) => (
+              <li class="text-[#DBE7C9] ">
+                <a href={`/blog/${post.slug}/`}>
+                  <img
+                    class="shadow-lg zoom-img shadow-[#365314]"
+                    width={720}
+                    height={360}
+                    src={post.data.heroImage}
+                    alt=""
+                  />
+                  <div class="flex justify-between">
+                    <a href={ics_link}>
+						<h4 class="title">{post.data.title}</h4>
+					</a>
+                    <p class="date ">
+                      <FormattedDate date={post.data.pubDate} />
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
