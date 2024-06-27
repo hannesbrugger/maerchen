@@ -60,6 +60,7 @@ const posts = (await getCollection('blog')).sort(
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
+				font-size: 1rem;
 			}
 			ul li a:hover h4,
 			ul li a:hover .date {
@@ -88,18 +89,20 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<p>Hier finden Sie bevorstehende und vergangene Veranstaltungen von mir. Von privaten Gartenfesten, Mittelaltermaerkten bis zum Altersheim. Schauen Sie sich gerne um und speichern sie einen Termin mit einem Klick in ihrem Kalender.</p>
+			<p class="text-[#DBE7C9] mb-8">Hier finden Sie bevorstehende und vergangene Veranstaltungen von mir. Von privaten Gartenfesten, Mittelaltermaerkten bis zum Altersheim. Schauen Sie sich gerne um und speichern sie einen Termin mit einem Klick in ihrem Kalender.</p>
 			<section>
 				<ul>
 					{
 						posts.map((post) => (
-							<li>
+							<li class="text-[#DBE7C9] ">
 								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+									<img class="shadow-lg sh shadow-[#365314]" width={720} height={360} src={post.data.heroImage} alt="" />
+									<div class="flex justify-between">
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date ">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+									</div>
 								</a>
 							</li>
 						))

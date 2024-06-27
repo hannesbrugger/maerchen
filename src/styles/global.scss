@@ -6,16 +6,6 @@
 
 @import "_colors";
 
-body {
-	font-family: 'Libre Baskerville', serif;
-	font-size: 16px;  
-  }
-  
-  h1 {
-	font-family: 'Fjalla One', sans-serif;
-	font-size: 46px;
-  }
-
 
 @font-face {
 	font-family: 'Atkinson';
@@ -34,32 +24,32 @@ body {
 }
 
 
-body {
-	font: {
-		family: 'Atkinson', sans-serif;
-		size: 20px;
-	}
-
-	text: {
-		align: left;
-
-	}
-
+@font-face {
+	font-family: 'NG';
+	src: url('/fonts/PlaywriteNGModern-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+  }
+  
+  body {
+	font-family: 'NG', sans-serif;
+	font-size: 20px;
+	text-align: left;
+	
+	
 	line-height: 1.7;
 	margin: 0;
 	padding: 0;
-	background: linear-gradient($green-gradient) no-repeat;
-	background-size: 100% 600px;
+	background: $base-color;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: $base-color;
 }
 
-
-
 main {
+	font-family: 'NG', sans-serif;
 	width: 100%;
-	background: linear-gradient($green-gradient) no-repeat;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
