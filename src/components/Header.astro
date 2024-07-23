@@ -92,9 +92,9 @@ import { SITE_TITLE } from "../consts";
 
 <script>
 	document
-		.getElementById("burger-button")
+		.getElementById("burger-button")!
 		.addEventListener("click", function () {
-			var menu = document.getElementById("mobile-menu");
+			var menu = document.getElementById("mobile-menu")!;
 			menu.classList.toggle("hidden");
 		});
 </script>

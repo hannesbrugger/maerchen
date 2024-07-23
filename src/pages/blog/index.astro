@@ -1,4 +1,5 @@
 ---
+import Label from "../../components/Label";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
@@ -35,8 +36,6 @@ console.log("future");
 first_half.forEach((element) => {
 	console.log(element.data.title);
 });
-
-import { ics } from "calendar-link";
 
 // Funktion zur Berechnung der verbleibenden Tage
 ---
@@ -122,54 +121,6 @@ import { ics } from "calendar-link";
 			.zoom-img:hover {
 				transform: scale(102%);
 			}
-
-			#days-remaining {
-				height: 2.5rem;
-				width: 11rem;
-
-				background-color: #7880b5ff;
-				p {
-					font-family: "NG", sans-serif;
-					font-size: 15px;
-				}
-				img {
-					height: 110%;
-				}
-			}
-
-			#days-remaining:hover {
-				.calender-text {
-					display: block;
-				}
-				p {
-					display: none;
-				}
-			}
-
-			ul li:first-child #days-remaining {
-				img {
-					height: 110%;
-					width: 20%;
-				}
-			}
-
-			@media (min-width: 720px) {
-				ul li:first-child #days-remaining {
-					height: 3rem;
-					width: 13rem;
-					bottom: 2rem;
-
-					background-color: #7880b5ff;
-					p {
-						font-family: "NG", sans-serif;
-						font-size: 18px;
-					}
-					img {
-						height: 110%;
-						width: 20%;
-					}
-				}
-			}
 		</style>
 	</head>
 	<body>
@@ -186,9 +137,6 @@ import { ics } from "calendar-link";
 				<ul>
 					{
 						future_posts.map((post) => {
-							const remain = calculateRemainingDays(
-								post.data.pubDate,
-							);
 							return (
 								<li>
 									<a href={`/blog/${post.slug}/`}>
@@ -199,45 +147,9 @@ import { ics } from "calendar-link";
 												src={post.data.heroImage}
 												alt=""
 											/>
-											{post.data.event && remain > 0 && (
-												<a href={ics(post.data.event)}>
-													<div
-														id="days-remaining"
-														class="slideRight transition-all  shadow-md rounded-l-md p-2 gap-2 flex justify-between items-center z-30 absolute right-0 bottom-5"
-													>
-														<p>
-															In {remain} Tagen !
-														</p>
-														<img
-															src="public/calender.svg"
-															alt=""
-															class="animate-rotate"
-														/>
-														<p class="hidden transition-all tracking-wider calender-text">
-															Jetzt merken !
-														</p>
-													</div>
-												</a>
-											)}
 
-											{post.data.event && remain == 0 && (
-												<a href={ics(post.data.event)}>
-													<div
-														id="days-remaining"
-														class="slideRight transition-all shadow-md rounded-l-md p-2 gap-2 flex justify-between items-center z-30 absolute right-0 bottom-5"
-													>
-														<p>Heute !</p>
-
-														<img
-															src="public/happy.svg"
-															alt=""
-															class="animate-rotate"
-														/>
-														<p class="hidden transition-all tracking-wider calender-text">
-															Jetzt merken !
-														</p>
-													</div>
-												</a>
+											{post.data.event && (
+												<Label post={post} />
 											)}
 										</div>
 									</a>
@@ -284,25 +196,5 @@ import { ics } from "calendar-link";
 			</section>
 		</main>
 		<Footer />
-		<script>
-			// Funktion zur Berechnung der verbleibenden Tage
-			const calculateRemainingDays = (targetDate: Date) => {
-				const currentDate = new Date();
-				const timeDifference =
-					targetDate.valueOf() - currentDate.valueOf();
-				const daysRemaining = Math.ceil(
-					timeDifference / (1000 * 60 * 60 * 24),
-				);
-				return daysRemaining < 0 ? -1 : daysRemaining;
-			};
-
-			// Aktualisieren der Tage auf der Seite
-			document.addEventListener("DOMContentLoaded", () => {
-				const daysRemainingElement =
-					document.querySelector("#days-remaining");
-				daysRemainingElement.textContent =
-					calculateRemainingDays(targetDate);
-			});
-		</script>
 	</body>
 </html>

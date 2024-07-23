@@ -1,0 +1,52 @@
+#days-remaining {
+    height: 2.5rem;
+    width: 11rem;
+
+    background-color: #7880b5ff;
+
+    p {
+        font-family: "NG", sans-serif;
+        font-size: 15px;
+    }
+
+    img {
+        height: 110%;
+    }
+}
+
+#days-remaining:hover {
+    .calender-text {
+        display: block;
+    }
+
+    p {
+        display: none;
+    }
+}
+
+ul li:first-child #days-remaining {
+    img {
+        height: 110%;
+        width: 20%;
+    }
+}
+
+@media (min-width: 720px) {
+    ul li:first-child #days-remaining {
+        height: 3rem;
+        width: 13rem;
+        bottom: 2rem;
+
+        background-color: #7880b5ff;
+
+        p {
+            font-family: "NG", sans-serif;
+            font-size: 18px;
+        }
+
+        img {
+            height: 110%;
+            width: 20%;
+        }
+    }
+}
