@@ -1,15 +1,24 @@
 ---
-
-const { size="w-48" } = Astro.props;
-
+const { size = "w-48" } = Astro.props;
 ---
 
 <a href="/about">
-    <div transition:name="ulli" class=`${size} col-span-3 rounded-md hover:shadow-md`>
+    <div
+        transition:name="ulli"
+        class=`${size} card shrink col-span-3 w-full rounded-md hover:shadow-md`
+    >
         <img src="/profile.jpeg" class="w-full object-cover rounded-t-md" />
-        <div class="bg-slate-100 p-3 rounded-b-md flex flex-col items-center">
+        <div
+            class="text-[#34602dff] bg-[#ece5f0ff] p-5 rounded-b-md flex flex-col items-center"
+        >
             <p class="font-semibold">Ulli Brugger</p>
             <p class="font-medium">Märchenerzählerin</p>
         </div>
     </div>
 </a>
+
+<style>
+    .card {
+        font-family: "NG", sans-serif;
+    }
+</style>

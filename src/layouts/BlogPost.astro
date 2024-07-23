@@ -4,13 +4,21 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import { google, outlook, office365, yahoo, ics } from "calendar-link";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, event } =
+	Astro.props;
+
+console.log(event);
+
+if (event) {
+	const ics_link = google(event);
+}
 ---
 
-<html lang="en">
+<html lang="de">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
@@ -18,6 +26,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;
+				color: #d2d8c8;
 			}
 			.hero-image {
 				width: 100%;
@@ -78,7 +87,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 								updatedDate && (
 									<div class="last-updated-on">
 										Last updated on{" "}
-										<FormattedDate date={updatedDate} />
+										<FormattedDate date={date} />
 									</div>
 								)
 							}

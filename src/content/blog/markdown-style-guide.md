@@ -3,6 +3,11 @@ title: 'Markdown Style Guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jul 01 2022'
 heroImage: '/blog-placeholder-1.jpg'
+event: 
+  title: "Hoho"
+  description: "Be there!"
+  start: "2019-12-29 18:00:00 +0100"
+  duration: [3, "hour"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

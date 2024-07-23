@@ -4,7 +4,6 @@ import Card from "../components/Card.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import Layout from "../layouts/BlogPost.astro";
 ---
 
 <!doctype html>
@@ -14,20 +13,38 @@ import Layout from "../layouts/BlogPost.astro";
   </head>
   <body>
     <Header />
-      <main>
-        <div class="flex gap-5">
-          <Card size="w-[500px]" />
-          <div class="text-slate-100">
-            <p class="text-4xl mb-4">Hallo ich bin die Ulli,</p>
-            <p>
-              ich bin schon seit Jahren Märchenerzählerin und habe meine Ausbildung
-              in ... gemacht. Egal ob Kindern oder Senioren, es gibt immer ein
-              Märchen das uns in unser jetzigen Situation berührt und zum Nachdenken
-              bringt.
-            </p>
-          </div>
+    <main>
+      <div class="sm:flex gap-10 mt-20">
+        <Card />
+        <div class="mt-10 sm:mt-0">
+          <h1>Hallo ich bin die Ulli,</h1>
+          <p>
+            aus Meersburg am Bodensee erzähle ich seit 2001 Märchen, Sagen und
+            Geschichten für Jung und Alt. Schon als Erzieherin machte ich früh
+            die Erfahrung dass, durch das freie erzählen eine ganz besondere
+            Verbindung zwischen Erzähler und Zuhörer entsteht. Diese Erfahrung
+            bewegte mich dazu die Kunst der Erzählung weiter vertiefen und zu
+            ergründen.
+          </p>
         </div>
-      </main>
+      </div>
+      <div class="mt-16 flex flex-col mb-10 gap-7">
+        <p>
+          Mit der Ausbildung zur Märchenerzählerin, welche ich 2001 in der
+          Schweiz abschloss und den darauf folgenden Weiterbildungen lasse ich
+          als freischaffende Erzählerin auf Veranstaltungen aller Art, in
+          Schulen und Kindergärten sowie Festivals, Bilder in den Köpfen der
+          Zuhörer entstehen.
+        </p>
+        <p>
+          Seit 2001 erzähle ich mit Leidenschaft und Hingabe Geschichten über
+          Mut, Liebe, List und Glück oft begleitet von Musikern und Klängen. In
+          Workshops und Kursen vermittel ich meinen Erfahrungsschatz und da
+          Märchen Brücken bauen können engagiere ich mich mit meiner Kunst an
+          sozialen Projekten.
+        </p>
+      </div>
+    </main>
     <Footer /></body
   >
 </html>
