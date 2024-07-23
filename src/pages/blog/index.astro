@@ -6,12 +6,39 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
-const posts = (await getCollection("blog")).sort(
+const calculateRemainingDays = (targetDate: Date) => {
+	const currentDate = new Date();
+	const timeDifference = targetDate.valueOf() - currentDate.valueOf();
+	const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+	return daysRemaining < 0 ? -1 : daysRemaining;
+};
+
+const first_half = (await getCollection("blog")).filter(
+	(post) => calculateRemainingDays(post.data.pubDate) > -1,
+);
+const second_half = (await getCollection("blog")).filter(
+	(post) => calculateRemainingDays(post.data.pubDate) < 0,
+);
+
+const future_posts = first_half.sort(
+	(b, a) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const past_posts = second_half.sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
 
-console.log(posts);
+second_half.forEach((element) => {
+	console.log(element.data.title);
+});
+console.log("future");
+first_half.forEach((element) => {
+	console.log(element.data.title);
+});
+
 import { ics } from "calendar-link";
+
+// Funktion zur Berechnung der verbleibenden Tage
 ---
 
 <!doctype html>
@@ -45,33 +72,28 @@ import { ics } from "calendar-link";
 				width: 100%;
 			}
 			ul li img {
-				margin-bottom: 0.5rem;
 				border-radius: 12px;
 			}
 			ul li a {
 				display: block;
 			}
 			.title {
-				margin: 0;
+				margin-top: 0.5rem;
 				color: rgb(var(--black));
 				line-height: 1;
 				font-family: "NG-2light", sans-serif;
 				font-size: 1.8rem;
 				margin-bottom: 1rem;
+				cursor: context-menu;
 			}
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
 				font-size: 0.8rem;
-				font-family: "NG-2light", sans-serif;
+				font-family: "NG-light", sans-serif;
+				cursor: context-menu;
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
+
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
@@ -100,6 +122,54 @@ import { ics } from "calendar-link";
 			.zoom-img:hover {
 				transform: scale(102%);
 			}
+
+			#days-remaining {
+				height: 2.5rem;
+				width: 11rem;
+
+				background-color: #7880b5ff;
+				p {
+					font-family: "NG", sans-serif;
+					font-size: 15px;
+				}
+				img {
+					height: 110%;
+				}
+			}
+
+			#days-remaining:hover {
+				.calender-text {
+					display: block;
+				}
+				p {
+					display: none;
+				}
+			}
+
+			ul li:first-child #days-remaining {
+				img {
+					height: 110%;
+					width: 20%;
+				}
+			}
+
+			@media (min-width: 720px) {
+				ul li:first-child #days-remaining {
+					height: 3rem;
+					width: 13rem;
+					bottom: 2rem;
+
+					background-color: #7880b5ff;
+					p {
+						font-family: "NG", sans-serif;
+						font-size: 18px;
+					}
+					img {
+						height: 110%;
+						width: 20%;
+					}
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -108,45 +178,131 @@ import { ics } from "calendar-link";
 			<h1>Meine Veranstaltungen</h1>
 			<p class="mb-8">
 				Hier finden Sie bevorstehende und vergangene Veranstaltungen von
-				mir. Von privaten Gartenfesten, Mittelaltermaerkten bis zum
+				mir. Von privaten Gartenfesten, Mittelaltermärkten bis zum
 				Altersheim. Schauen Sie sich gerne um und speichern sie einen
 				Termin mit einem Klick in ihrem Kalender.
 			</p>
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<div class="relative">
-										<img
-											class="shadow-lg zoom-img shadow-[#365314]"
-											width={720}
-											height={360}
-											src={post.data.heroImage}
-											alt=""
-										/>
-										{post.data.event && (
-											<a href={ics(post.data.event)}>
-												<div class="rounded-l-md h-10 w-28 z-30 absolute right-0 bottom-5 bg-black" />
-											</a>
-										)}
+						future_posts.map((post) => {
+							const remain = calculateRemainingDays(
+								post.data.pubDate,
+							);
+							return (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+										<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
+											<img
+												width={720}
+												height={360}
+												src={post.data.heroImage}
+												alt=""
+											/>
+											{post.data.event && remain > 0 && (
+												<a href={ics(post.data.event)}>
+													<div
+														id="days-remaining"
+														class="slideRight transition-all  shadow-md rounded-l-md p-2 gap-2 flex justify-between items-center z-30 absolute right-0 bottom-5"
+													>
+														<p>
+															In {remain} Tagen !
+														</p>
+														<img
+															src="public/calender.svg"
+															alt=""
+															class="animate-rotate"
+														/>
+														<p class="hidden transition-all tracking-wider calender-text">
+															Jetzt merken !
+														</p>
+													</div>
+												</a>
+											)}
+
+											{post.data.event && remain == 0 && (
+												<a href={ics(post.data.event)}>
+													<div
+														id="days-remaining"
+														class="slideRight transition-all shadow-md rounded-l-md p-2 gap-2 flex justify-between items-center z-30 absolute right-0 bottom-5"
+													>
+														<p>Heute !</p>
+
+														<img
+															src="public/happy.svg"
+															alt=""
+															class="animate-rotate"
+														/>
+														<p class="hidden transition-all tracking-wider calender-text">
+															Jetzt merken !
+														</p>
+													</div>
+												</a>
+											)}
+										</div>
+									</a>
+									<div class="flex justify-between mt-3">
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date ">
+											<FormattedDate
+												date={post.data.pubDate}
+											/>
+										</p>
 									</div>
-								</a>
-								<div class="flex justify-between mt-3">
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date ">
-										<FormattedDate
-											date={post.data.pubDate}
-										/>
-									</p>
-								</div>
-							</li>
-						))
+								</li>
+							);
+						})
+					}
+
+					{
+						past_posts.map((post) => {
+							return (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+										<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
+											<img
+												width={720}
+												height={360}
+												src={post.data.heroImage}
+												alt=""
+											/>
+										</div>
+									</a>
+									<div class="flex justify-between mt-3">
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date ">
+											<FormattedDate
+												date={post.data.pubDate}
+											/>
+										</p>
+									</div>
+								</li>
+							);
+						})
 					}
 				</ul>
 			</section>
 		</main>
 		<Footer />
+		<script>
+			// Funktion zur Berechnung der verbleibenden Tage
+			const calculateRemainingDays = (targetDate: Date) => {
+				const currentDate = new Date();
+				const timeDifference =
+					targetDate.valueOf() - currentDate.valueOf();
+				const daysRemaining = Math.ceil(
+					timeDifference / (1000 * 60 * 60 * 24),
+				);
+				return daysRemaining < 0 ? -1 : daysRemaining;
+			};
+
+			// Aktualisieren der Tage auf der Seite
+			document.addEventListener("DOMContentLoaded", () => {
+				const daysRemainingElement =
+					document.querySelector("#days-remaining");
+				daysRemainingElement.textContent =
+					calculateRemainingDays(targetDate);
+			});
+		</script>
 	</body>
 </html>

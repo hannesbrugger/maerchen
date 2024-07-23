@@ -1,12 +1,12 @@
 ---
 title: 'Frühlingswoche'
 description: 'Frühlingswoche Meersburg 2023'
-pubDate: 'Mar 31 2023'
+pubDate: 'Jul 23 2024'
 heroImage: '/wald.jpg'
 event: 
   title: "Hoho"
   description: "Be there!"
-  start: "2019-12-29 18:00:00 +0100"
+  start: "2044-12-29 18:00:00 +0100"
   duration: [3, "hour"]
 ---
 
