@@ -11,8 +11,6 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage, event } =
 	Astro.props;
 
-console.log(event);
-
 if (event) {
 	const ics_link = google(event);
 }

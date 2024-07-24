@@ -3,6 +3,7 @@ title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2025'
 heroImage: '/blog-placeholder-2.jpg'
+updatedDate: 'Jul 22 2026'
 event: 
   title: "Hoho"
   description: "Be there!"

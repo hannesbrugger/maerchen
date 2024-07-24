@@ -46,21 +46,21 @@ import BaseHead from "../components/BaseHead.astro";
 				<img
 					src="public/bilder/artem-sapegin-XGDBdSQ70O0-unsplash.jpg"
 					alt=""
-					class="md:w-2/5 rounded-md md:mr-20 object-cover shadow-md shadow-black"
+					class="rounded-md md:w-2/5 md:mr-20 object-cover shadow-md shadow-black"
 				/>
-				<p class="flex justify-center">
+				<p class="flex md:w-3/5 justify-center">
 					...welche uns seit jeher in den Bann zieht. Es braucht nicht
 					viel um Bilder im Kopf entstehen lassen, ein guter Erzähler,
 					eine Geschichte und Zuhörer mit offenen Ohren.
 				</p>
 			</div>
-			<div class="flex md:flex-row gap-5 flex-col">
+			<div class="flex md:flex-row gap-5 w-full flex-col">
 				<img
 					src="public/bilder/andrew-morris-1EdBFojwgL8-unsplash.jpg"
 					alt=""
 					class="md:w-2/5 rounded-md object-cover shadow-md shadow-black"
 				/>
-				<p class="flex justify-center">
+				<p class="flex md:w-3/5 justify-center">
 					Durch das pure und freie erzählen, erhalten Märchen, Sagen
 					und Geschichten ihre Seele, dabei entstehen ganz besondere
 					und intensive Momente. Es sind genau diese Momente die mich
@@ -68,23 +68,14 @@ import BaseHead from "../components/BaseHead.astro";
 				</p>
 			</div>
 
-			<div class="w-full flex justify-center p-20">
-				<Card size="w-2/5" />
+			<div class="w-2/5 flex justify-center p-20">
+				<Card />
 			</div>
 		</main>
 		<Footer />
 		<style>
 			span {
 				font-size: 0.8rem !important;
-			}
-			@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
-
-			.title {
-				font-family: "Prata", serif;
-
-				> .title-inner {
-					display: inline-block;
-				}
 			}
 
 			.roller {
