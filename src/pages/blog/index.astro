@@ -38,84 +38,6 @@ first_half.forEach((element) => {
 // Funktion zur Berechnung der verbleibenden Tage
 ---
 
-<style>
-	main {
-		width: 960px;
-	}
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 2rem;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
-	ul li {
-		width: calc(50% - 1rem);
-	}
-	ul li * {
-		text-decoration: none;
-		transition: 0.2s ease;
-	}
-	ul li:first-child {
-		width: 100%;
-		text-align: center;
-	}
-	ul li:first-child img {
-		width: 100%;
-	}
-	ul li img {
-		border-radius: 12px;
-	}
-	ul li a {
-		display: block;
-	}
-	.title {
-		margin-top: 0.5rem;
-		color: rgb(var(--black));
-		line-height: 1;
-		font-family: "NG", sans-serif;
-		font-size: 1.8rem;
-		margin-bottom: 1rem;
-		cursor: context-menu;
-	}
-	.date {
-		margin: 0;
-		color: rgb(var(--gray));
-		font-size: 0.8rem;
-		font-family: "NG-light", sans-serif;
-		cursor: context-menu;
-	}
-
-	@media (max-width: 720px) {
-		ul {
-			gap: 0.5em;
-		}
-		ul li {
-			width: 100%;
-			text-align: center;
-		}
-		.title {
-			font-size: 1.4rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.title {
-			font-size: 1rem;
-		}
-	}
-
-	.zoom-img {
-		width: 100%;
-		object-fit: cover;
-		transition: all 0.3s ease-in-out;
-	}
-
-	.zoom-img:hover {
-		transform: scale(102%);
-	}
-</style>
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<main>
 		<h1 class="mt-9">Meine Veranstaltungen</h1>
@@ -174,7 +96,7 @@ first_half.forEach((element) => {
 								</a>
 								<div class="flex justify-between mt-3">
 									<h4 class="title">{post.data.title}</h4>
-									<p class="date ">
+									<p class="date">
 										<FormattedDate
 											date={post.data.pubDate}
 										/>
@@ -188,3 +110,82 @@ first_half.forEach((element) => {
 		</section>
 	</main>
 </BaseLayout>
+
+<style>
+	main {
+		width: 960px;
+	}
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	ul li {
+		width: calc(50% - 1rem);
+	}
+	ul li * {
+		text-decoration: none;
+		transition: 0.2s ease;
+	}
+	ul li:first-child {
+		width: 100%;
+		text-align: center;
+	}
+	ul li:first-child img {
+		width: 100%;
+	}
+	ul li img {
+		border-radius: 12px;
+	}
+	ul li a {
+		display: block;
+	}
+	.title {
+		margin-top: 0.5rem;
+		color: rgb(var(--black));
+		line-height: 1;
+		font-family: "NG", sans-serif;
+		font-size: 1.8rem;
+		margin-bottom: 1rem;
+		cursor: context-menu;
+	}
+	.date {
+		margin: 0;
+		color: rgb(var(--gray));
+		font-size: 0.8rem;
+		font-family: "NG", sans-serif;
+		cursor: context-menu;
+	}
+
+	@media (max-width: 720px) {
+		ul {
+			gap: 0.5em;
+		}
+		ul li {
+			width: 100%;
+			text-align: center;
+		}
+		.title {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.title {
+			font-size: 1rem;
+		}
+	}
+
+	.zoom-img {
+		width: 100%;
+		object-fit: cover;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.zoom-img:hover {
+		transform: scale(102%);
+	}
+</style>

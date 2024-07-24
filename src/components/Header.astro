@@ -4,9 +4,9 @@ import { SITE_TITLE } from "../consts";
 ---
 
 <header>
-	<nav>
+	<nav class="relative">
 		<a href="/"><img src="/logo.png" class="h-10 rounded-md shrink-0" /></a>
-		<div class="flex w-full justify-center abslotue p-4">
+		<div class="flex w-full justify-center absolute p-4">
 			<div class="internal-links hidden md:flex">
 				<HeaderLink href="/">Home</HeaderLink>
 				<HeaderLink href="/blog">Veranstaltungen</HeaderLink>
@@ -42,7 +42,7 @@ import { SITE_TITLE } from "../consts";
 	<div class="h-2"></div>
 	<div
 		class="bg-repeat h-4 w-full absolute bottom-0 left-0"
-		style="background-image: url(public/pattern.svg)"
+		style="background-image: url(../../public/pattern.svg)"
 	>
 	</div>
 </header>
