@@ -1,5 +1,5 @@
 ---
-title: 'Frühlingswoche'
+title: 'winter'
 description: 'Frühlingswoche Meersburg 2023'
 pubDate: 'Jul 23 2024'
 heroImage: '/wald.jpg'
