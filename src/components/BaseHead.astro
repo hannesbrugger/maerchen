@@ -1,7 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-import "../styles/global.scss";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -22,19 +19,56 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
+
 <link
 	rel="preload"
-	href="/fonts/PlaywriteNGModern-Regular.ttf"
+	href="/fonts/PlaywriteNGModern-ExtraLight.ttf"
 	as="font"
-	type="font/truetype"
-	crossorigin
+	type="font/ttf"
+	crossorigin="anonymous"
 />
 <link
 	rel="preload"
 	href="/fonts/PlaywriteNGModern-Light.ttf"
 	as="font"
-	type="font/truetype"
-	crossorigin
+	type="font/ttf"
+	crossorigin="anonymous"
+/>
+<link
+	rel="preload"
+	href="/fonts/PlaywriteNGModern-Regular.ttf"
+	as="font"
+	type="font/ttf"
+	crossorigin="anonymous"
+/>
+<link
+	rel="preload"
+	href="/fonts/PlaywriteNGModern-Thin.ttf"
+	as="font"
+	type="font/ttf"
+	crossorigin="anonymous"
+/>
+
+<link
+	rel="preload"
+	href="/fonts/NanumGothic-Bold.ttf"
+	as="font"
+	type="font/ttf"
+	crossorigin="anonymous"
+/>
+<link
+	rel="preload"
+	href="/fonts/NanumGothic-ExtraBold.ttf"
+	as="font"
+	type="font/ttf"
+	crossorigin="anonymous"
+/>
+<link
+	rel="preload"
+	href="/fonts/NanumGothic-Regular.ttf"
+	as="font"
+	type="font/ttf"
+	crossorigin="anonymous"
 />
 
 <ViewTransitions />

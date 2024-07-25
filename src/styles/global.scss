@@ -6,72 +6,70 @@
 
 @import "_colors";
 
+// Fonts
 
 @font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
-	font-weight: 400;
+	font-family: 'NanumGothic';
+	src: url('/fonts/NanumGothic-Bold.ttf') format('truetype');
+	font-weight: 700; // Bold weight
 	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
 }
 
 @font-face {
 	font-family: 'NanumGothic';
-	src: url('public/fonts/NanumGothic-Bold.ttf') format('truetype');
-	font-weight: 700;
+	src: url('/fonts/NanumGothic-ExtraBold.ttf') format('truetype');
+	font-weight: 800; // Extra Bold weight
 	font-style: normal;
-	font-display: swap;
 }
 
 @font-face {
 	font-family: 'NanumGothic';
-	src: url('public/fonts/NanumGothic-ExtraBold.ttf') format('truetype');
-	font-weight: 800;
+	src: url('/fonts/NanumGothic-Regular.ttf') format('truetype');
+	font-weight: 400; // Regular weight
 	font-style: normal;
-	font-display: swap;
 }
 
 @font-face {
-	font-family: 'NanumGothic';
-	src: url('public/fonts/NanumGothic-Regular.ttf') format('truetype');
-	font-weight: 400;
+	font-family: 'PlaywriteNGModern';
+	src: url('/fonts/PlaywriteNGModern-ExtraLight.ttf') format('truetype');
+	font-weight: 200;
 	font-style: normal;
-	font-display: swap;
 }
 
+@font-face {
+	font-family: 'PlaywriteNGModern';
+	src: url('/fonts/PlaywriteNGModern-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
 
 @font-face {
-	font-family: 'NG';
+	font-family: 'PlaywriteNGModern';
 	src: url('/fonts/PlaywriteNGModern-Regular.ttf') format('truetype');
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
-
-
-@font-face {
-	font-family: 'NG';
-	src: url('public/fonts/PlaywriteNGModern-Light.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
-	font-display: swap;
 }
 
+@font-face {
+	font-family: 'PlaywriteNGModern';
+	src: url('/fonts/PlaywriteNGModern-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+// Layout
+
+html {
+	font-size: 16px; // Basis-Schriftgröße
+}
 
 body {
-	font-family: 'NanumGothic', sans-serif;
-	font-size: 20px;
-	font-weight: 400;
-	text-align: left;
 
+	text-align: left;
+	font-family: 'NanumGothic', sans-serif;
+	font-weight: 400; // Regular weight
+	letter-spacing: 0.01em;
+	font-size: 1rem;
 
 	line-height: 1.7;
 	margin: 0;
@@ -83,32 +81,6 @@ body {
 
 }
 
-h1 {
-	font-family: "NG", sans-serif;
-	font-weight: 600;
-	letter-spacing: 0.001em;
-	line-height: 1.625;
-	font-size: 40px;
-	padding-bottom: 1rem;
-	cursor: context-menu;
-}
-
-@media (max-width: 900px) {
-	h1 {
-		font-size: 30px;
-	}
-}
-
-p {
-	letter-spacing: 0.01em;
-	font-size: 24px;
-}
-
-@media (max-width: 900px) {
-	p {
-		font-size: 18px;
-	}
-}
 
 main {
 	width: 100%;
@@ -119,12 +91,14 @@ main {
 
 header {
 	color: $hunter-green;
-	font-family: 'NG', sans-serif;
+	background: $magnolia;
 	position: relative;
+	margin: 0;
+	padding: 0 1em;
+	box-shadow: 0 2px 8px rgba(var(--black), 5%);
 }
 
 footer {
-	font-family: 'NG', sans-serif;
 	padding: 2em 0em 2em 0em;
 	background: $magnolia;
 	color: $hunter-green;
@@ -132,7 +106,70 @@ footer {
 	position: relative;
 }
 
-@media (max-width: 1300px) {
+
+h1 {
+	font-family: 'PlaywriteNGModern', sans-serif;
+	font-weight: 400; // Regular weight
+	letter-spacing: 0.001em;
+	line-height: 1.625;
+	padding-bottom: 1rem;
+	cursor: context-menu;
+}
+
+h2 {
+	font-family: 'PlaywriteNGModern', sans-serif;
+	font-weight: 400; // Regular weight
+	letter-spacing: 0.001em;
+	line-height: 1.625;
+	padding-bottom: 1rem;
+	cursor: context-menu;
+}
+
+h3 {
+	font-family: 'PlaywriteNGModern', sans-serif;
+	font-weight: 300; // Regular weight
+	letter-spacing: 0.001em;
+	line-height: 1.625;
+	padding-bottom: 1rem;
+	cursor: context-menu;
+}
+
+p {
+	font-family: 'NanumGothic', sans-serif;
+	font-weight: 400; // Regular weight
+	letter-spacing: 0.01em;
+}
+
+
+
+// Responsive sizes
+
+
+
+@media (max-width: 900px) {
+	main {
+		max-width: calc(100% - 2em);
+	}
+
+	h1 {
+		font-size: 1.7rem;
+	}
+
+	h2 {
+		font-size: 1.3rem;
+	}
+
+	h3 {
+		font-size: 0.6rem;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+}
+
+// over 900px
+@media (min-width: 900px) {
 	body {
 		font-size: 18px;
 	}
@@ -141,13 +178,27 @@ footer {
 		padding: 1em;
 		max-width: calc(100% - 7em);
 	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 0.8rem;
+	}
+
+	p {
+		font-size: 1.3rem;
+	}
+
 }
 
-@media (max-width: 800px) {
-	main {
-		max-width: calc(100% - 2em);
-	}
-}
+
+// Animations
 
 @keyframes slideRight {
 	from {

@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import Pattern from "../../public/pattern.svg";
 ---
 
 <header>
@@ -42,7 +42,9 @@ import { SITE_TITLE } from "../consts";
 	<div class="h-2"></div>
 	<div
 		class="bg-repeat h-4 w-full absolute bottom-0 left-0"
-		style="background-image: url(../../public/pattern.svg)"
+		style={{
+			backgroundImage: `url(${Pattern.src})`,
+		}}
 	>
 	</div>
 </header>
@@ -50,6 +52,8 @@ import { SITE_TITLE } from "../consts";
 	.internal-links a {
 		padding: 1rem;
 		text-decoration: none;
+		font-family: "PlaywriteNGModern", sans-serif;
+		font-weight: 400;
 	}
 
 	.mobile-menu a {

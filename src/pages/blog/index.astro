@@ -27,14 +27,6 @@ const past_posts = second_half.sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
 
-second_half.forEach((element) => {
-	console.log(element.data.title);
-});
-console.log("future");
-first_half.forEach((element) => {
-	console.log(element.data.title);
-});
-
 // Funktion zur Berechnung der verbleibenden Tage
 ---
 
@@ -68,8 +60,8 @@ first_half.forEach((element) => {
 									</div>
 								</a>
 								<div class="flex justify-between mt-3">
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date ">
+									<h2>{post.data.title}</h2>
+									<p>
 										<FormattedDate
 											date={post.data.pubDate}
 										/>
@@ -95,12 +87,12 @@ first_half.forEach((element) => {
 									</div>
 								</a>
 								<div class="flex justify-between mt-3">
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
+									<h2>{post.data.title}</h2>
+									<h3 class="shrink-0">
 										<FormattedDate
 											date={post.data.pubDate}
 										/>
-									</p>
+									</h3>
 								</div>
 							</li>
 						);
@@ -143,22 +135,6 @@ first_half.forEach((element) => {
 	ul li a {
 		display: block;
 	}
-	.title {
-		margin-top: 0.5rem;
-		color: rgb(var(--black));
-		line-height: 1;
-		font-family: "NG", sans-serif;
-		font-size: 1.8rem;
-		margin-bottom: 1rem;
-		cursor: context-menu;
-	}
-	.date {
-		margin: 0;
-		color: rgb(var(--gray));
-		font-size: 0.8rem;
-		font-family: "NG", sans-serif;
-		cursor: context-menu;
-	}
 
 	@media (max-width: 720px) {
 		ul {
@@ -167,15 +143,6 @@ first_half.forEach((element) => {
 		ul li {
 			width: 100%;
 			text-align: center;
-		}
-		.title {
-			font-size: 1.4rem;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.title {
-			font-size: 1rem;
 		}
 	}
 
