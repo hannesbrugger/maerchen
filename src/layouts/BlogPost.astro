@@ -25,9 +25,9 @@ if (event) {
 		</div>
 		<div class="prose">
 			<div class="title">
-				<div class="date">
+				<h3>
 					<FormattedDate date={pubDate} />
-				</div>
+				</h3>
 				<h1>{title}</h1>
 				<div class="flex justify-around mb-2">
 					<Button text="Wo?" icon="map" />
@@ -67,11 +67,7 @@ if (event) {
 	.title h1 {
 		margin: 0 0 0.5em 0;
 	}
-	.date {
-		margin-bottom: 0.5em;
-		color: rgb(var(--gray));
-		font-family: "NG", sans-serif;
-	}
+
 	.last-updated-on {
 		font-style: italic;
 	}

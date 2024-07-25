@@ -84,9 +84,8 @@ body {
 
 main {
 	width: 100%;
-	max-width: calc(100% - 20em);
 	margin: auto;
-	padding: 3em 1em;
+	padding: 4rem 2rem 4rem 2rem;
 }
 
 header {
@@ -149,6 +148,7 @@ p {
 @media (max-width: 900px) {
 	main {
 		max-width: calc(100% - 2em);
+		padding: 3rem 1rem 3rem 1rem;
 	}
 
 	h1 {
@@ -168,14 +168,11 @@ p {
 	}
 }
 
-// over 900px
+
 @media (min-width: 900px) {
-	body {
-		font-size: 18px;
-	}
 
 	main {
-		padding: 1em;
+		padding: 5rem 4rem 5rem 4rem;
 		max-width: calc(100% - 7em);
 	}
 
@@ -197,6 +194,13 @@ p {
 
 }
 
+@media (min-width: 1200px) {
+
+	main {
+		padding: 7rem 10rem 7rem 10rem;
+		max-width: calc(100% - 7em);
+	}
+}
 
 // Animations
 
