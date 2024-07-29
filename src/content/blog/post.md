@@ -1,15 +1,15 @@
 ---
-Titel: 'First post'
-Bild: '/blog-placeholder-3.jpg'
+Titel: 'second post'
+Bild: '/blog-placeholder-2.jpg'
 Beschreibung: 'Lorem ipsum dolor sit amet'
-Datum: '27-7-2024'
-Uhrzeit: '3:30'
-Dauer: [1, "hour"]
+Datum: '31-12-2024'
+Uhrzeit: '18:30'
+Dauer: [3, "hour"]
 Ort: "KaffeHaus"
 
-GoogleMaps: 
-Preis:
-Newsletter: true
+GoogleMaps: 910A Ngô Quyền, An Hải, Sơn Trà, Đà Nẵng 550000, Vietnam
+Preis: 12
+Newsletter:
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.

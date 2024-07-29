@@ -4,8 +4,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ConvertDate } from "../../components/ConvertDate";
 
-const calculateRemainingDays = (targetDate: Date) => {
+const calculateRemainingDays = (Datum: string) => {
+	const targetDate = ConvertDate(Datum);
 	const currentDate = new Date();
 	const timeDifference = targetDate.valueOf() - currentDate.valueOf();
 	const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
@@ -13,18 +15,22 @@ const calculateRemainingDays = (targetDate: Date) => {
 };
 
 const first_half = (await getCollection("blog")).filter(
-	(post) => calculateRemainingDays(post.data.pubDate) > -1,
+	(post) => calculateRemainingDays(post.data.Datum) > -1,
 );
 const second_half = (await getCollection("blog")).filter(
-	(post) => calculateRemainingDays(post.data.pubDate) < 0,
+	(post) => calculateRemainingDays(post.data.Datum) < 0,
 );
 
 const future_posts = first_half.sort(
-	(b, a) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	(b, a) =>
+		ConvertDate(b.data.Datum).valueOf() -
+		ConvertDate(a.data.Datum).valueOf(),
 );
 
 const past_posts = second_half.sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+	(a, b) =>
+		ConvertDate(a.data.Datum).valueOf() -
+		ConvertDate(b.data.Datum).valueOf(),
 );
 
 // Funktion zur Berechnung der verbleibenden Tage
@@ -50,20 +56,21 @@ const past_posts = second_half.sort(
 										<img
 											width={720}
 											height={360}
-											src={post.data.heroImage}
+											src={post.data.Bild}
 											alt=""
 										/>
 
-										{post.data.event && (
+										{post.data.Datum && (
 											<Label post={post} />
 										)}
 									</div>
 								</a>
 								<div class="flex justify-between mt-3">
-									<h2>{post.data.title}</h2>
+									<h2>{post.data.Titel}</h2>
 									<p>
 										<FormattedDate
-											date={post.data.pubDate}
+											dateStr={post.data.Datum}
+											timeStr={post.data.Uhrzeit}
 										/>
 									</p>
 								</div>
@@ -81,16 +88,17 @@ const past_posts = second_half.sort(
 										<img
 											width={720}
 											height={360}
-											src={post.data.heroImage}
+											src={post.data.Bild}
 											alt=""
 										/>
 									</div>
 								</a>
 								<div class="flex justify-between mt-3">
-									<h2>{post.data.title}</h2>
+									<h2>{post.data.Titel}</h2>
 									<h3 class="shrink-0">
 										<FormattedDate
-											date={post.data.pubDate}
+											dateStr={post.data.Datum}
+											timeStr={post.data.Uhrzeit}
 										/>
 									</h3>
 								</div>

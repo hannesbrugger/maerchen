@@ -1,8 +1,15 @@
 ---
-title: 'Second post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 15 2022'
-heroImage: '/blog-placeholder-4.jpg'
+Titel: '4. post'
+Bild: '/blog-placeholder-2.jpg'
+Beschreibung: 'Lorem ipsum dolor sit amet'
+Datum: '31-12-2024'
+Uhrzeit: '18:30'
+Dauer: [3, "hour"]
+Ort: "KaffeHaus"
+
+GoogleMaps: 910A Ngô Quyền, An Hải, Sơn Trà, Đà Nẵng 550000, Vietnam
+Preis: 12
+Newsletter: true
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.

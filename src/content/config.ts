@@ -3,19 +3,17 @@ import { defineCollection, z } from 'astro:content';
 const blog = defineCollection({
 	type: 'content',
 	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		// Transform string to Date object
-		pubDate: z.coerce.date(),
-		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-		event: z.object({
-			title: z.string(),
-			description: z.string(),
-			start: z.coerce.date(),
-			duration: z.tuple([z.number(), z.enum(["hour", "minute"])]),
-		}).optional(),
-	}),
+		Titel: z.string(),
+		Bild: z.string(),
+		Beschreibung: z.string(),
+		Datum: z.string(),
+		Uhrzeit: z.string(),
+		Dauer: z.tuple([z.number(), z.enum(["hour", "minute"])]),
+		Ort: z.string(),
+		GoogleMaps: z.string().nullable(),
+		Preis: z.number().nullable(),
+		Newsletter: z.boolean().nullable(),
+	})
 });
 
 export const collections = { blog };

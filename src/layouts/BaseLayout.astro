@@ -17,6 +17,38 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <html lang="de">
     <head>
         <BaseHead title={title} description={description} image={image} />
+        <!-- MailerLite Universal -->
+        <script>
+            declare function ml(...args: any[]): any;
+            (function (
+                w?: any,
+                d?: any,
+                e?: any,
+                u?: any,
+                f?: any,
+                l?: any,
+                n?: any,
+            ) {
+                (w[f] =
+                    w[f] ||
+                    function () {
+                        (w[f].q = w[f].q || []).push(arguments);
+                    }),
+                    (l = d.createElement(e)),
+                    (l.async = 1),
+                    (l.src = u),
+                    (n = d.getElementsByTagName(e)[0]),
+                    n.parentNode.insertBefore(l, n);
+            })(
+                window,
+                document,
+                "script",
+                "https://assets.mailerlite.com/js/universal.js",
+                "ml",
+            );
+            ml("account", "1038652");
+        </script>
+        <!-- End MailerLite Universal -->
     </head>
     <body>
         <Header />

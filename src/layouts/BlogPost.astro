@@ -1,38 +1,53 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
-import { google, outlook, office365, yahoo, ics } from "calendar-link";
 import Button from "../components/Button.astro";
+import { GetICS } from "../components/GetICS";
 
-type Props = CollectionEntry<"blog">["data"];
-
-const { title, description, pubDate, updatedDate, heroImage, event } =
-	Astro.props;
-
-if (event) {
-	const ics_link = google(event);
+interface Props {
+	post: any;
 }
+
+const { post } = Astro.props;
+
+const ics = GetICS(post);
 ---
 
 <main>
 	<article>
 		<div class="hero-image">
 			{
-				heroImage && (
-					<img width={1020} height={510} src={heroImage} alt="" />
+				post.Bild && (
+					<img width={1020} height={510} src={post.Bild} alt="" />
 				)
 			}
 		</div>
 		<div class="prose">
 			<div class="title">
 				<h3>
-					<FormattedDate date={pubDate} />
+					<FormattedDate
+						dateStr={post.Datum}
+						timeStr={post.Uhrzeit}
+					/>
 				</h3>
-				<h1>{title}</h1>
+				<h1>{post.Titel}</h1>
 				<div class="flex justify-around mb-2">
-					<Button text="Wo?" icon="map" />
-					<Button text="19:20" icon="clock" />
-					<Button text="Kalender" icon="cal" />
+					{
+						post.GoogleMaps && (
+							<Button
+								text="Wo?"
+								icon="map"
+								link={post.GoogleMaps}
+							/>
+						)
+					}
+					{
+						post.Uhrzeit && (
+							<Button text={post.Uhrzeit} icon="clock" />
+						)
+					}
+					{post.Preis && <Button text={`${post.Preis} Euro`} />}
+
+					{ics && <Button text="Kalender" icon="cal" link={ics} />}
 				</div>
 				<hr />
 			</div>

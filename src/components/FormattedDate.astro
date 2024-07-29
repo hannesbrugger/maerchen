@@ -1,17 +1,38 @@
 ---
+import { ConvertDate } from "./ConvertDate";
+
 interface Props {
-	date: Date;
+	dateStr: string;
+	timeStr: string;
 }
 
-const { date } = Astro.props;
+const { dateStr } = Astro.props;
+
+const date = ConvertDate(dateStr);
+const monthNames = [
+	"Jan",
+	"Feb",
+	"Mär",
+	"Apr",
+	"Mai",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Okt",
+	"Nov",
+	"Dez",
+];
+
+// Formatieren des Datums in das gewünschte Format "31 Dec"
+const dayStr = String(date.getDate()).padStart(2, "0");
+const monthStr = monthNames[date.getMonth()];
+const yearStr = monthNames[date.getFullYear()];
+
+// Rückgabe im Format "31 Dec"
+return `${dayStr} ${monthStr}`;
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString("en-us", {
-			year: "numeric",
-			month: "short",
-			day: "numeric",
-		})
-	}
+	{dayStr + " " + monthStr + " " + yearStr}
 </time>

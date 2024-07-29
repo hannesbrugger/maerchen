@@ -2,23 +2,25 @@
 import Calender from "../../public/calender.svg";
 import Map from "../../public/map.svg";
 import Clock from "../../public/clock.svg";
+import Cash from "../../public/cash.svg";
 
 interface Props {
     text: string;
     link?: string;
-    icon?: "cal" | "map" | "clock";
+    icon?: "cal" | "map" | "clock" | "cash";
 }
 
 const icons = {
     cal: Calender.src,
     map: Map.src,
     clock: Clock.src,
+    cash: Cash.src,
 };
 
 const { text, link, icon } = Astro.props;
 ---
 
-<a href={link ? link : ""}>
+<a href={link ? link : undefined} class={link ? link : "cursor-default"}>
     <div class="flex p-2 gap-2 items-center bg-glaucous rounded-md">
         {icon && <img src={icon ? icons[icon] : ""} alt="" />}
         {text}
