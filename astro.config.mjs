@@ -8,5 +8,11 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind(), react()]
+  integrations: [mdx(), sitemap(), tailwind(), react()],
+  trailingSlash: "never",
+  build: {
+    rollupOptions: {
+      external: ['markdown-it', 'sanitize-html'], // Hier werden markdown-it und sanitize-html als extern deklariert
+    },
+  },
 });

@@ -12,6 +12,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 ---
 
+<!-- RSS -->
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title="Your Site's Title"
+	href={new URL("rss.xml", Astro.site)}
+/>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
