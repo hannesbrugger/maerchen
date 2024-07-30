@@ -20,6 +20,8 @@
     "@types/react-dom": "^18.3.0",
     "astro": "^4.11.5",
     "calendar-link": "^2.6.0",
+    "dotenv": "^16.4.5",
+    "mailersend": "^2.2.0",
     "markdown-it": "^14.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
