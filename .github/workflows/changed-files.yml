@@ -28,8 +28,13 @@ jobs:
           echo "Changed files: $CHANGED_FILES"
 
       - name: Run script on changed files
+        env:
+          MAILERAPI: ${{ secrets.MAILERAPI }}
+          SUPABASE_ANON_KEY: ${{secrets.SUPABASE_ANON_KEY}}
+          SUPABASE_URL: ${{secrets.SUPABASE_URL}}
+
         run: |
           while IFS= read -r file; do
             echo "Processing $file"
-            .github/scripts/SendMails.sh "$file"
+            .github/scripts/SendMails.sh "$MAILERAPI" "$SUPABASE_ANON_KEY" "$SUPABASE_URL" "$file"
           done < changed_files.txt
