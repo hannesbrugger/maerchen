@@ -39,11 +39,19 @@ DAUER=$(grep '^Dauer:' "$MD_FILE" | sed 's/^Dauer: //' | sed 's/^\[\(.*\)\]$/\1/
 ORT=$(grep '^Ort:' "$MD_FILE" | sed 's/^Ort: //')
 MAILTEXT=$(grep '^MailText:' "$MD_FILE" | sed 's/^MailText: //')
 
-echo $TITEL
+# Debug-Ausgabe (kann entfernt werden)
+echo "Titel: $TITEL"
+echo "Bild: $BILD"
+echo "Beschreibung: $BESCHREIBUNG"
+echo "Datum: $DATUM"
+echo "Uhrzeit: $UHRZEIT"
+echo "Dauer: $DAUER"
+echo "Ort: $ORT"
+echo "MAILTEXT: $MAILTEXT"
 
 mails=$(curl 'https://trokjaduhgjllgfnevoq.supabase.co/rest/v1/emails?select=*' \
-  -H "apikey: "$SUPABASE_ANON_KEY" \
-  -H "Authorization: Bearer "$SUPABASE_ANON_KEY")
+  -H "apikey: $SUPABASE_ANON_KEY \
+  -H "Authorization: Bearer $SUPABASE_ANON_KEY)
 
 # Überprüfen, ob die Antwort erfolgreich war
 if [ -z "$mails" ]; then
