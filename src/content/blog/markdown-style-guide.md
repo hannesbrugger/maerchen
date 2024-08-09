@@ -1,5 +1,5 @@
 ---
-Titel: 'Third post'
+Titel: 'Third pohihist'
 Bild: '/blog-placeholder-2.jpg'
 Beschreibung: 'Lorem ipsum dolor sit amet'
 Datum: '31-12-2024'
