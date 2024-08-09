@@ -2,6 +2,7 @@
 
 # Pfad zur Markdown-Datei, die als Argument übergeben wird
 MD_FILE="$1"
+echo "hallo"
 
 # Überprüfen, ob die Datei existiert
 if [ ! -f "$MD_FILE" ]; then
