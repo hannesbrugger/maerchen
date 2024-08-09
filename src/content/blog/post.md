@@ -5,7 +5,7 @@ Beschreibung: 'Lorem ipsum dolor sit amet'
 Datum: '31-12-2024'
 Uhrzeit: '18:30'
 Dauer: [3, "hour"]
-Ort: "KaffeHaus"
+Ort: "KaffeHus"
 
 MailText:
 GoogleMaps: 910A Ngô Quyền, An Hải, Sơn Trà, Đà Nẵng 550000, Vietnam
