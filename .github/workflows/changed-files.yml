@@ -23,10 +23,10 @@ jobs:
         id: get_changes
         run: |
           echo "Changed files:"
-CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | xargs -I {} sh -c 'if echo "{}" | grep -q "^src/content/"; then echo "{}"; fi' || true)
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep '^src/content/' || true)
           echo "${CHANGED_FILES}" > changed_files.txt
           echo "Changed files: $CHANGED_FILES"
-
+  
       - name: Run script on changed files
         env:
           MAILERAPI: ${{ secrets.MAILERAPI }}
