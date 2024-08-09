@@ -4,7 +4,7 @@ import { supabase } from "../../lib/supabase";
 
 export const prerender = false
 
-export const GET = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
 
     const url = new URL(request.url);
     const email = url.searchParams.get('email');
@@ -28,5 +28,10 @@ export const GET = async ({ request }) => {
     const { data, error } = await supabase
         .from('emails')
         .insert([{ mail: email, name: name }]);
+
+
+    return new Response(null, {
+        status: 302,
+    });
 
 };

@@ -31,5 +31,5 @@ jobs:
         run: |
           while IFS= read -r file; do
             echo "Processing $file"
-            /.github/scripts/SendMails.sh "$file"
+            .github/workflows/scripts/SendMails.sh "$file"
           done < changed_files.txt

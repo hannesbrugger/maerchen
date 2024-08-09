@@ -6,10 +6,20 @@ import "../../styles/global.scss";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+	return posts.map(
+		(post: {
+			slug: any;
+			data: {
+				Bild: string | null | undefined;
+				Titel: unknown;
+				Datum: string;
+				Uhrzeit: string;
+			};
+		}) => ({
+			params: { slug: post.slug },
+			props: post,
+		}),
+	);
 }
 type Props = CollectionEntry<"blog">;
 

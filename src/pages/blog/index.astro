@@ -15,20 +15,22 @@ const calculateRemainingDays = (Datum: string) => {
 };
 
 const first_half = (await getCollection("blog")).filter(
-	(post) => calculateRemainingDays(post.data.Datum) > -1,
+	(post: { data: { Datum: string } }) =>
+		calculateRemainingDays(post.data.Datum) > -1,
 );
 const second_half = (await getCollection("blog")).filter(
-	(post) => calculateRemainingDays(post.data.Datum) < 0,
+	(post: { data: { Datum: string } }) =>
+		calculateRemainingDays(post.data.Datum) < 0,
 );
 
 const future_posts = first_half.sort(
-	(b, a) =>
+	(b: { data: { Datum: string } }, a: { data: { Datum: string } }) =>
 		ConvertDate(b.data.Datum).valueOf() -
 		ConvertDate(a.data.Datum).valueOf(),
 );
 
 const past_posts = second_half.sort(
-	(a, b) =>
+	(a: { data: { Datum: string } }, b: { data: { Datum: string } }) =>
 		ConvertDate(a.data.Datum).valueOf() -
 		ConvertDate(b.data.Datum).valueOf(),
 );
@@ -48,63 +50,83 @@ const past_posts = second_half.sort(
 		<section>
 			<ul>
 				{
-					future_posts.map((post) => {
-						return (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
-										<img
-											width={720}
-											height={360}
-											src={post.data.Bild}
-											alt=""
-										/>
+					future_posts.map(
+						(post: {
+							slug: any;
+							data: {
+								Bild: string | null | undefined;
+								Datum: string;
+								Titel: unknown;
+								Uhrzeit: string;
+							};
+						}) => {
+							return (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+										<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
+											<img
+												width={720}
+												height={360}
+												src={post.data.Bild}
+												alt=""
+											/>
 
-										{post.data.Datum && (
-											<Label post={post} />
-										)}
+											{post.data.Datum && (
+												<Label post={post} />
+											)}
+										</div>
+									</a>
+									<div class="flex justify-between mt-3">
+										<h2>{post.data.Titel}</h2>
+										<p>
+											<FormattedDate
+												dateStr={post.data.Datum}
+												timeStr={post.data.Uhrzeit}
+											/>
+										</p>
 									</div>
-								</a>
-								<div class="flex justify-between mt-3">
-									<h2>{post.data.Titel}</h2>
-									<p>
-										<FormattedDate
-											dateStr={post.data.Datum}
-											timeStr={post.data.Uhrzeit}
-										/>
-									</p>
-								</div>
-							</li>
-						);
-					})
+								</li>
+							);
+						},
+					)
 				}
 
 				{
-					past_posts.map((post) => {
-						return (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
-										<img
-											width={720}
-											height={360}
-											src={post.data.Bild}
-											alt=""
-										/>
+					past_posts.map(
+						(post: {
+							slug: any;
+							data: {
+								Bild: string | null | undefined;
+								Titel: unknown;
+								Datum: string;
+								Uhrzeit: string;
+							};
+						}) => {
+							return (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+										<div class="relative hover:shadow-lg shadow-black zoom-img rounded-md overflow-hidden">
+											<img
+												width={720}
+												height={360}
+												src={post.data.Bild}
+												alt=""
+											/>
+										</div>
+									</a>
+									<div class="flex justify-between mt-3">
+										<h2>{post.data.Titel}</h2>
+										<h3 class="shrink-0">
+											<FormattedDate
+												dateStr={post.data.Datum}
+												timeStr={post.data.Uhrzeit}
+											/>
+										</h3>
 									</div>
-								</a>
-								<div class="flex justify-between mt-3">
-									<h2>{post.data.Titel}</h2>
-									<h3 class="shrink-0">
-										<FormattedDate
-											dateStr={post.data.Datum}
-											timeStr={post.data.Uhrzeit}
-										/>
-									</h3>
-								</div>
-							</li>
-						);
-					})
+								</li>
+							);
+						},
+					)
 				}
 			</ul>
 		</section>
