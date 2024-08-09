@@ -7,6 +7,7 @@ Uhrzeit: '17:00'
 Dauer: [2, "hour"]
 Ort: Am Meer
 
+MailText:
 GoogleMaps: https://www.google.com/maps/place/A+La+Carte+Danang+Beach/@16.0699637,108.2380891,16.09z/data=!4m9!3m8!1s0x3142178414e2dd27:0xe82c30135e1d5f85!5m2!4m1!1i2!8m2!3d16.0687309!4d108.244693!16s%2Fg%2F1pxwhcxjm?entry=ttu
 Preis: 7    
 Newsletter: true

@@ -1,6 +1,7 @@
 ---
 import Card from "../components/Card.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Newsletter from "../components/Newsletter.astro";
 
 // assets
 import Img1 from "../../public/bilder/artem-sapegin-XGDBdSQ70O0-unsplash.jpg";
@@ -48,12 +49,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 			</p>
 		</div>
 
-		<div class="flex justify-between gap-10 p-20">
-			<div class="w-2/5">
+		<div class="flex flex-col mt-3 gap-4">
+			<Newsletter />
+			<div class="w-4/12">
 				<Card />
 			</div>
-			<div class="ml-embedded" data-form="mzuXd5"></div>
 		</div>
+		<!-- <div class="ml-embedded" data-form="mzuXd5"></div> -->
 	</main>
 </BaseLayout>
 
@@ -125,3 +127,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		}
 	}
 </style>
+
+<!-- Read the Formbutton docs at formspree.io/formbutton/docs. See more examples at codepen.io/formspree -->
+<script src="https://formspree.io/js/formbutton-v1.min.js" defer>
+/* paste this line in verbatim */
+window.formbutton =
+	window.formbutton ||
+	function () {
+		(formbutton.q = formbutton.q || []).push(arguments);
+	};
+/* customize formbutton below*/
+formbutton("create", {
+	action: "https://formspree.io/f/myzgwepp",
+	title: "How can we help?",
+	fields: [
+		{
+			type: "email",
+			label: "Email:",
+			name: "email",
+			required: true,
+			placeholder: "your@email.com",
+		},
+		{
+			type: "textarea",
+			label: "Message:",
+			name: "message",
+			placeholder: "What's on your mind?",
+		},
+		{ type: "submit" },
+	],
+	styles: {
+		title: {
+			backgroundColor: "gray",
+		},
+		button: {
+			backgroundColor: "gray",
+		},
+	},
+});
+
+const { data, error } = await supabase
+	.from("emails")
+	.insert([{ some_column: "someValue", other_column: "otherValue" }])
+	.select();
+</script>

@@ -1,0 +1,57 @@
+---
+import "../styles/forms.scss";
+---
+
+<!-- src/components/Newsletter.astro --><!-- src/components/Newsletter.astro -->
+<div>
+    <form id="newsletter" class="form" action="/api/newsletter" method="get">
+        <h2 class="title">Newsletter</h2>
+        <div class="subtitle">Erfahre von neuen Events !</div>
+
+        <div class="input-container ic1">
+            <input
+                name="name"
+                id="name"
+                class="input"
+                type="text"
+                placeholder=" "
+            />
+            <div class="cut"></div>
+            <label for="name" class="placeholder">Name</label>
+        </div>
+
+        <div class="input-container ic2">
+            <input
+                name="email"
+                id="email"
+                class="input"
+                type="email"
+                placeholder=" "
+            />
+            <div class="cut cut-short"></div>
+            <label for="email" class="placeholder">Email</label>
+        </div>
+        <a href="/datenschutz" class="text-sm py-10 text-glaucous">
+            Wie ich mit deinen Daten umgehe
+        </a>
+        <button id="submit" class="submit bg-glaucous" type="submit">
+            Anmelden
+        </button>
+    </form>
+
+    <div id="popup" class="form hidden border border-white">
+        <div class="subtitle">Sie sind eingeschrieben !</div>
+    </div>
+</div>
+
+<script>
+    document
+        .getElementById("submit")!
+        .addEventListener("click", function (event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+            var popup = document.getElementById("popup")!;
+            var newsletter = document.getElementById("newsletter")!;
+            popup.classList.toggle("hidden");
+            newsletter.classList.toggle("hidden");
+        });
+</script>

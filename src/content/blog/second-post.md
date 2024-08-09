@@ -7,6 +7,7 @@ Uhrzeit: '18:30'
 Dauer: [3, "hour"]
 Ort: "KaffeHaus"
 
+MailText:
 GoogleMaps: 910A Ngô Quyền, An Hải, Sơn Trà, Đà Nẵng 550000, Vietnam
 Preis: 12
 Newsletter: true

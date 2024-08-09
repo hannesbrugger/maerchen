@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
@@ -15,4 +15,23 @@ export default defineConfig({
       external: ['markdown-it', 'sanitize-html'], // Hier werden markdown-it und sanitize-html als extern deklariert
     },
   },
+  output: 'hybrid',
+  // experimental: {
+  //   env: {
+  //     schema: {
+  //       MailerAPI: envField.string({
+  //         context: 'server',
+  //         access: 'secret',
+  //       }),
+  //       SUPABASE_URL: envField.string({
+  //         context: 'server',
+  //         access: 'secret',
+  //       }),
+  //       SUPABASE_ANON_KEY: envField.string({
+  //         context: 'server',
+  //         access: 'secret',
+  //       }),
+  //     }
+  //   }
+  // }
 });

@@ -7,8 +7,9 @@ Uhrzeit: '3:30'
 Dauer: [1, "hour"]
 Ort: "KaffeHaus"
 
+MailText:
 GoogleMaps: 
-Preis:
+Preis: 
 Newsletter: true
 ---
 

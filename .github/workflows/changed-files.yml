@@ -1,0 +1,35 @@
+name: Run Script on Changed Files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: git fetch --prune --unshallow
+
+      - name: Get changed files
+        id: get_changes
+        run: |
+          echo "Changed files:"
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep '^src/content/' || true)
+          echo "${CHANGED_FILES}" > changed_files.txt
+          echo "Changed files: $CHANGED_FILES"
+
+      - name: Run script on changed files
+        run: |
+          while IFS= read -r file; do
+            echo "Processing $file"
+            /.github/scripts/SendMails.sh "$file"
+          done < changed_files.txt

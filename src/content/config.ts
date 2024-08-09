@@ -10,6 +10,7 @@ const blog = defineCollection({
 		Uhrzeit: z.string(),
 		Dauer: z.tuple([z.number(), z.enum(["hour", "minute"])]),
 		Ort: z.string(),
+		MailText: z.string().nullable(),
 		GoogleMaps: z.string().nullable(),
 		Preis: z.number().nullable(),
 		Newsletter: z.boolean().nullable(),
