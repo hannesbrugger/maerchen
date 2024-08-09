@@ -34,6 +34,11 @@ jobs:
           SUPABASE_URL: ${{secrets.SUPABASE_URL}}
 
         run: |
+          if [ ! -s changed_files.txt ]; then
+            echo "Keine neuen Events"
+            exit 0
+          fi
+
           while IFS= read -r file; do
             echo "Processing $file"
             .github/scripts/SendMails.sh "$MAILERAPI" "$SUPABASE_ANON_KEY" "$SUPABASE_URL" "$file"

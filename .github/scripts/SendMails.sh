@@ -21,6 +21,7 @@ SUPABASE_ANON_KEY="$2"
 SUPABASE_URL="$3"
 
 # Pfad zur Markdown-Datei, die als Argument übergeben wird
+
 MD_FILE="$4"
 
 # Überprüfen, ob die Datei existiert
