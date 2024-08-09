@@ -5,7 +5,7 @@ Beschreibung: 'Lorem ipsum dolor sit amet'
 Datum: '27-7-2024'
 Uhrzeit: '3:30'
 Dauer: [1, "hour"]
-Ort: "KaffeHaussee"
+Ort: "KaffeHausse   e"
 
 MailText:
 GoogleMaps: 

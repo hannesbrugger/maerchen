@@ -2,7 +2,7 @@
 
 # Überprüfen, ob das API-Token-Argument übergeben wurde
 if [ -z "$1" ]; then
-  echo "MAILERAPI-Token wurde nicht übergeben."
+  echo "MAILERSEND_API_KEY-Token wurde nicht übergeben."
   exit 1
 fi
 
@@ -16,7 +16,7 @@ if [ -z "$3" ]; then
   exit 1
 fi
 
-MAILERAPI="$1"
+MAILERSEND_API_KEY="$1"
 SUPABASE_ANON_KEY="$2"
 SUPABASE_URL="$3"
 
@@ -127,11 +127,10 @@ echo "$mails" | jq -c '.[] | "\(.name) \(.mail)"' | while IFS= read -r line; do
 EOF
   )
 
-  # Führe den curl-Befehl aus
   curl -X POST \
     https://api.mailersend.com/v1/email \
     -H 'Content-Type: application/json' \
     -H 'X-Requested-With: XMLHttpRequest' \
-    -H "Authorization: Bearer $MAILERAPI" \
+    -H "Authorization: Bearer $MAILERSEND_API_KEY" \
     -d "$JSON_DATA"
 done
